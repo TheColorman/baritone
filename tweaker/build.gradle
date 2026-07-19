@@ -35,6 +35,7 @@ unimined.minecraft {
 configurations {
     common
     shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
+    proguard
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
 }
@@ -57,6 +58,8 @@ dependencies {
     }
 
     compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
+
+    proguard "com.guardsquare:proguard-base:7.8.2"
 
     // because of multiple sourcesets `common project(":")` doesn't work
     for (sourceSet in rootProject.sourceSets) {
@@ -98,6 +101,7 @@ jar {
 
 task proguard(type: ProguardTask) {
     proguardVersion "7.8.2"
+    proguardFiles = configurations.proguard
 }
 
 task createDist(type: CreateDistTask, dependsOn: proguard)

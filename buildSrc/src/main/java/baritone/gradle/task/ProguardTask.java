@@ -18,8 +18,10 @@
 package baritone.gradle.task;
 
 import baritone.gradle.util.Determinizer;
+import org.gradle.api.file.FileCollection;
 import org.gradle.api.plugins.JavaPluginConvention;
 import org.gradle.api.tasks.Input;
+import org.gradle.api.tasks.InputFiles;
 import org.gradle.api.tasks.SourceSetContainer;
 import org.gradle.api.tasks.TaskAction;
 import org.gradle.api.tasks.TaskCollection;
@@ -33,15 +35,12 @@ import xyz.wagyourtail.unimined.api.UniminedExtension;
 import xyz.wagyourtail.unimined.api.minecraft.MinecraftConfig;
 
 import java.io.*;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 
 /**
  * @author Brady
@@ -52,8 +51,19 @@ public class ProguardTask extends BaritoneGradleTask {
     @Input
     private String proguardVersion;
 
+    @InputFiles
+    private FileCollection proguardFiles;
+
     public String getProguardVersion() {
         return proguardVersion;
+    }
+
+    public FileCollection getProguardFiles() {
+        return proguardFiles;
+    }
+
+    public void setProguardFiles(FileCollection proguardFiles) {
+        this.proguardFiles = proguardFiles;
     }
 
     private List<String> requiredLibraries;
@@ -64,8 +74,6 @@ public class ProguardTask extends BaritoneGradleTask {
         super.verifyArtifacts();
 
         // "Haha brady why don't you make separate tasks"
-        downloadProguard();
-        extractProguard();
         generateConfigs();
         processArtifact();
         proguardApi();
@@ -92,23 +100,6 @@ public class ProguardTask extends BaritoneGradleTask {
         }
 
         Determinizer.determinize(this.artifactPath.toString(), this.artifactUnoptimizedPath.toString(), List.of(), false);
-    }
-
-    private void downloadProguard() throws Exception {
-        Path proguardZip = getTemporaryFile(String.format(PROGUARD_ZIP, proguardVersion));
-        if (!Files.exists(proguardZip)) {
-            write(new URL(String.format("https://github.com/Guardsquare/proguard/releases/download/v%s/proguard-%s.zip", proguardVersion, proguardVersion)).openStream(), proguardZip);
-        }
-    }
-
-    private void extractProguard() throws Exception {
-        Path proguardJar = getTemporaryFile(String.format(PROGUARD_JAR, proguardVersion));
-        if (!Files.exists(proguardJar)) {
-            ZipFile zipFile = new ZipFile(getTemporaryFile(String.format(PROGUARD_ZIP, proguardVersion)).toFile());
-            ZipEntry zipJarEntry = zipFile.getEntry(String.format("proguard-%s/lib/proguard.jar", proguardVersion));
-            write(zipFile.getInputStream(zipJarEntry), proguardJar);
-            zipFile.close();
-        }
     }
 
     private JavaLauncher getJavaLauncherForProguard() {
@@ -230,7 +221,8 @@ public class ProguardTask extends BaritoneGradleTask {
         getProject().javaexec(spec -> {
             spec.workingDir(workingDirectory.toFile());
             spec.args("@" + workingDirectory.relativize(config));
-            spec.classpath(getTemporaryFile(String.format(PROGUARD_JAR, proguardVersion)));
+            spec.getMainClass().set("proguard.ProGuard");
+            spec.classpath(proguardFiles);
 
             spec.executable(getJavaLauncherForProguard().getExecutablePath().getAsFile());
         }).assertNormalExitValue().rethrowFailure();

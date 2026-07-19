@@ -33,6 +33,7 @@ unimined.minecraft {
 configurations {
     common
     shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
+    proguard
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
 }
@@ -46,6 +47,7 @@ dependencies {
         shadowCommon sourceSet.output
     }
     include "dev.babbaj:nether-pathfinder:${project.nether_pathfinder_version}"
+    proguard "com.guardsquare:proguard-base:7.8.2"
 }
 
 processResources {
@@ -80,6 +82,7 @@ components.java {
 task proguard(type: ProguardTask) {
     proguardVersion "7.8.2"
     compType "fabric"
+    proguardFiles = configurations.proguard
 }
 
 task createDist(type: CreateDistTask, dependsOn: proguard) {
