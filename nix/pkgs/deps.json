@@ -842,9 +842,9 @@
    "jar": "sha256-35C7oP48tYa38WTnj+j49No/LdXCf6ZF+IgQDMwl3XI=",
    "pom": "sha256-vb34EHLBkO6aixgaXFj1vZF6dQ+xOiVt679T9dvTOio="
   },
-  "io/github/llamalad7#mixinextras-fabric/0.5.3": {
-   "jar": "sha256-b41kKX9Ck3w+U5hcd5nuXqiqP2qpNkJugwMu64LWg50=",
-   "pom": "sha256-9jxbLTWHamE2NlQnCZBWJyVkh5J1vUpYCZMsdj2160Q="
+  "io/github/llamalad7#mixinextras-fabric/0.5.4": {
+   "jar": "sha256-vXndsvVLOaCN7rUMsSQ5u6AUgSZN1an16oMFUb/vMf8=",
+   "pom": "sha256-HEV1d6WOjfHEf6mv/Sl3DUnQloD/LX2XPl75hy1ZGdM="
   },
   "io/netty#netty-buffer/4.2.7.Final": {
    "jar": "sha256-uBYTyO0iscw57M8qKL0MHUVh+y5eVCBhYX70zh0ii/U=",
@@ -916,9 +916,9 @@
    "jar": "sha256-jklbY0Rp1k+4rPo0laBly6zIoP/1XOHjEAe+TBbcV9M=",
    "pom": "sha256-Vptpd+5GA8llwcRsMFj6bpaSkbAWDraWTdCSzYnq3ZQ="
   },
-  "net/fabricmc#sponge-mixin/0.17.0+mixin.0.8.7": {
-   "jar": "sha256-54ifzRheQZkFLcvPD+IShYHL+GMK6n/rN0KWZ7G6Sak=",
-   "pom": "sha256-j3v42XNTExwOM11CUpL4Y4+Rv8uQo7RQM1fmLXZ3I28="
+  "net/fabricmc#sponge-mixin/0.17.3+mixin.0.8.7": {
+   "jar": "sha256-npDv7HHSutW5bJCJ8BnRSoYDIn08X0CNEvU/ronZnUE=",
+   "pom": "sha256-tW3VbdXa2IyDGhQfAc/hPoAWSrUjLVIPkFpdX9Aio2U="
   },
   "net/java/dev/jna#jna-platform/5.17.0": {
    "jar": "sha256-t+PUbIe60utAmw5wSRa82BIGFo41cxLf3dDiU2ec2eA=",
@@ -1066,45 +1066,45 @@
   "org/ow2#ow2/1.5.1": {
    "pom": "sha256-Mh3bt+5v5PU96mtM1tt0FU1r+kI5HB92OzYbn0hazwU="
   },
+  "org/ow2/asm#asm-analysis/9.10.1": {
+   "jar": "sha256-3t51ohMGtll07Nj4cRT/aXDwn7eUFXpMoJqyXIiMK/w=",
+   "pom": "sha256-U0+7hfZDwjMGkekmUuxA3Ul7Tyee8T2CnYWFiQXTO6M="
+  },
   "org/ow2/asm#asm-analysis/9.7": {
    "jar": "sha256-e8a8vCE3mUigyMRn+w+GQgbluBj2vAtUaHL1yflBVW8=",
    "pom": "sha256-nDMIDry2Ma5Pd+ti7We/xAy4cujP0Fishj5EXB3Zc98="
   },
-  "org/ow2/asm#asm-analysis/9.9": {
-   "jar": "sha256-ahXSjovSm6T9W8pLr5tQ6Pui17Ufv3jPoMh1pyFMZ4s=",
-   "pom": "sha256-kJ8kpxDHKODl1kPsC0g0pjyz0wAiEA1YPV3Wom41zaY="
+  "org/ow2/asm#asm-commons/9.10.1": {
+   "jar": "sha256-bQq++3y/ly6hbts37BSDU3JQUGOkX5dqt+qIntlJeJU=",
+   "pom": "sha256-zrLEPzonPbiK+GUtie1jEvPpGhoeD/xveCMWknjPeVw="
   },
   "org/ow2/asm#asm-commons/9.7": {
    "jar": "sha256-OJvCR5WOBJ/JoECNOYySxtNwwYA1EgOV1Muh2dkwS3o=",
    "pom": "sha256-Ws7j7nJS7ZC4B0x1XQInh0malfr/+YrEpoUQfE2kCbQ="
   },
-  "org/ow2/asm#asm-commons/9.9": {
-   "jar": "sha256-2y9vJhULvnwSZga0oRUYNrzCKh4FpCOzWFaYvs6ZX/g=",
-   "pom": "sha256-GKXT7xN351RLPKMhDyYTlrmH9gEO9ZHThyra5jEZ7kM="
+  "org/ow2/asm#asm-tree/9.10.1": {
+   "jar": "sha256-PfsNW2oQbNQLWyUOOZNfvy+Sf0R3VGpTaaOsYJzwUGs=",
+   "pom": "sha256-lj7r3qbi4f8lyQaLZKI44Vhcmfis1FVZWsFZp/UrbEE="
   },
   "org/ow2/asm#asm-tree/9.7": {
    "jar": "sha256-YvSzvENgRcGstcO6LY7FVuwzaQk9f10Gx0frBLVtUrE=",
    "pom": "sha256-o06h4+QSjAEDjbQ8aXbojHec9a+EsFBdombf5pZWaOw="
   },
-  "org/ow2/asm#asm-tree/9.9": {
-   "jar": "sha256-QhePN3XJxj+eXhRGdH0ptOyk2RvW515cQ8+jcqR9OMY=",
-   "pom": "sha256-0BeI7Y5ujiSsr2y0p73MJzNBYlL6oAIylZ4+Lp3xv0Q="
+  "org/ow2/asm#asm-util/9.10.1": {
+   "jar": "sha256-G7mdCR+6JZfcbVEZPpu88NhEfn7Za9jwGYsYFS8JZVw=",
+   "pom": "sha256-/OorrXho7RiUmi5xxAzybeFRbRZEDmP1hcPgXShcDSs="
   },
   "org/ow2/asm#asm-util/9.7": {
    "jar": "sha256-N6ZBTTZkGXPxrxBJN8ldbZIbLdtNYSxmxanysT/BQhE=",
    "pom": "sha256-XQFNjIcNSHGCW9LdtVZ7Ie9trI7Ei7uNu0ZbCzor9FI="
   },
-  "org/ow2/asm#asm-util/9.9": {
-   "jar": "sha256-OELhPP4yTumrfNxJFL6ZQ1QerTl8F+JtrwuKdVvt5xc=",
-   "pom": "sha256-qYWT/aHFOp5w12YPQWcg4wjSTbjhxFb6F+drp40nK2s="
+  "org/ow2/asm#asm/9.10.1": {
+   "jar": "sha256-7YJdEKsTmcjAy2aeaIzwyMgmKbTIOZtYNSto6SyhD8s=",
+   "pom": "sha256-4bHDgyyjrAqeVjxAX0x2ARi1VWpJINruFAWIhhl+CU0="
   },
   "org/ow2/asm#asm/9.7": {
    "jar": "sha256-rfRtXjSUC98Ujs3Sap7o7qlElqcgNP9xQQZrPupcTp0=",
    "pom": "sha256-3gARXx2E86Cy7jpLb2GS0Gb4bRhdZ7nRUi8sgP6sXwA="
-  },
-  "org/ow2/asm#asm/9.9": {
-   "jar": "sha256-A9madK0e5ccTNO9nQ39O9P40iMqnyW2GRavHPI4gF9Q=",
-   "pom": "sha256-z4Ye8edF1XFUr3muFN80DtU0Hl3NAVfO/NLrfxqgXFc="
   },
   "org/slf4j#slf4j-api/2.0.17": {
    "jar": "sha256-e3UdlSBhlU1av+1xgcH2RdM2CRtnmJFZHWMynGIuuDI=",
@@ -1128,9 +1128,9 @@
   }
  },
  "https://repo.spongepowered.org/repository/maven-public/net": {
-  "fabricmc#fabric-loader/0.18.6": {
-   "jar": "sha256-K8FShd3h1bnqPIRE1wY8YBhMfiGIN4XhgPeibpN3LkE=",
-   "pom": "sha256-LvZVBUw3rxoBAqT6l16JQw922Hs26tHfjmtCQlwvghc="
+  "fabricmc#fabric-loader/0.19.3": {
+   "jar": "sha256-c+7Yw0u60DIKKjy6U0Y1HoIvdPgrPzwGBXQGhHQTKVg=",
+   "pom": "sha256-m/Ryp4rtmWJfr8moFGPnMXR6UuUg+IelMtOFS+doxl8="
   },
   "fabricmc#intermediary/1.21.11": {
    "pom": "sha256-DmB9kI4GNZFVAZ06T+MeGe6SHwGnT8RuoK8CSB0e/tM="
@@ -1138,8 +1138,8 @@
   "fabricmc#intermediary/1.21.11/v2": {
    "jar": "sha256-9FuVMNC+yuWW/Uh0Pj7hczzCzcaRKM232NNXHeFjq4c="
   },
-  "fabricmc/fabric-loader/0.18.6/fabric-loader-0.18.6": {
-   "json": "sha256-/Ey9svzBEbnREOKr2fyhsuM91sEvxp/gsdBJPWJFKME="
+  "fabricmc/fabric-loader/0.19.3/fabric-loader-0.19.3": {
+   "json": "sha256-Q8IDEQuyTffMZuhbr2zO19QSz9JpOBjw3exkZWBXiAQ="
   }
  }
 }
