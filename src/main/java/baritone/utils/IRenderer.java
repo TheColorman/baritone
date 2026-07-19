@@ -23,11 +23,9 @@ import baritone.utils.accessor.IEntityRenderManager;
 import baritone.utils.accessor.IRenderPipelines;
 import baritone.utils.accessor.IRenderType;
 import com.mojang.blaze3d.pipeline.BlendFunction;
-import com.mojang.blaze3d.pipeline.ColorTargetState;
-import com.mojang.blaze3d.pipeline.DepthStencilState;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.platform.CompareOp;
+import com.mojang.blaze3d.platform.DepthTestFunction;
 import com.mojang.blaze3d.platform.DestFactor;
+import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.platform.SourceFactor;
 import com.mojang.blaze3d.vertex.*;
 import net.minecraft.client.Minecraft;
@@ -58,8 +56,13 @@ public interface IRenderer {
     );
 
     RenderPipeline.Snippet BARITONE_LINES_SNIPPET = RenderPipeline.builder(((IRenderPipelines) new RenderPipelines()).getLinesSnippet())
-        .withColorTargetState(new ColorTargetState(BARITONE_LINES_BLEND))
-        .withDepthStencilState(new DepthStencilState(CompareOp.LESS_THAN_OR_EQUAL, false))
+        .withBlend(new BlendFunction(
+            SourceFactor.SRC_ALPHA,
+            DestFactor.ONE_MINUS_SRC_ALPHA,
+            SourceFactor.ONE,
+            DestFactor.ZERO
+        ))
+        .withDepthWrite(false)
         .withCull(false)
         .buildSnippet();
 
@@ -72,15 +75,16 @@ public interface IRenderer {
 
     RenderPipeline BEACON_BEAM_OPAQUE = ((IRenderPipelines) new RenderPipelines()).baritone$registerPipeline(RenderPipeline.builder(BARITONE_BEACON_BEAM_SNIPPET)
             .withLocation("pipeline/baritone_beacon_beam_opaque")
-            .withColorTargetState(ColorTargetState.DEFAULT)
-            .withDepthStencilState(new DepthStencilState(CompareOp.ALWAYS_PASS, false))
+            .withDepthWrite(false)
+            .withDepthTestFunction(DepthTestFunction.NO_DEPTH_TEST)
             .withCull(true)
             .build());
 
     RenderPipeline BEACON_BEAM_TRANSLUCENT = ((IRenderPipelines) new RenderPipelines()).baritone$registerPipeline(RenderPipeline.builder(BARITONE_BEACON_BEAM_SNIPPET)
             .withLocation("pipeline/baritone_beacon_beam_translucent")
-            .withColorTargetState(new ColorTargetState(BlendFunction.TRANSLUCENT))
-            .withDepthStencilState(new DepthStencilState(CompareOp.ALWAYS_PASS, false))
+            .withDepthWrite(false)
+            .withBlend(BlendFunction.TRANSLUCENT)
+            .withDepthTestFunction(DepthTestFunction.NO_DEPTH_TEST)
             .withCull(true)
             .build());
 
@@ -88,7 +92,7 @@ public interface IRenderer {
         "renderType/baritone_lines_with_depth",
         RenderSetup.builder(RenderPipeline.builder(BARITONE_LINES_SNIPPET)
             .withLocation("pipelines/baritone_lines_with_depth")
-            .withDepthStencilState(new DepthStencilState(CompareOp.LESS_THAN_OR_EQUAL, false))
+            .withDepthTestFunction(DepthTestFunction.LEQUAL_DEPTH_TEST)
             .build())
             .bufferSize(256)
             .createRenderSetup()
@@ -97,7 +101,7 @@ public interface IRenderer {
         "renderType/baritone_lines_no_depth",
         RenderSetup.builder(RenderPipeline.builder(BARITONE_LINES_SNIPPET)
                 .withLocation("pipelines/baritone_lines_no_depth")
-                .withDepthStencilState(new DepthStencilState(CompareOp.ALWAYS_PASS, false))
+                .withDepthTestFunction(DepthTestFunction.NO_DEPTH_TEST)
                 .build())
             .bufferSize(256)
             .createRenderSetup()
