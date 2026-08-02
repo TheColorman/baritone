@@ -16,8 +16,9 @@
 
         systems = lib.systems.flakeExposed;
 
-        perSystem = { pkgs, ... }: {
+        perSystem = { pkgs, self', ... }: {
           pkgsDirectory = ./nix/pkgs;
+          packages.default = self'.packages.baritone-meteor;
 
           devShells.default = pkgs.mkShellNoCC {
             packages = with pkgs; [
